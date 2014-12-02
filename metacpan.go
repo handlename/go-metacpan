@@ -6,16 +6,20 @@ import (
 	"net/http"
 )
 
-// API host
-const host = "https://api.metacpan.org"
+// hosts
+const (
+	apiHost  = "api.metacpan.org"
+	htmlHost = "metacpan.org"
+)
 
 // APIs
 const (
+	APISearchAutocomplete = "/v0/search/autocomplete"
 	APISearchDistribution = "/v0/distribution/_search"
 )
 
 func request(urlStr string) ([]byte, error) {
-	resp, err := http.DefaultClient.Get(urlStr)
+	resp, err := http.DefaultClient.Get(fmt.Sprintf("https://%s%s", apiHost, urlStr))
 
 	if err != nil {
 		fmt.Println("error at request", urlStr)

@@ -18,7 +18,7 @@ func (d Distribution) Name() string {
 
 // URL returns url on metacpan.
 func (d Distribution) URL() string {
-	return fmt.Sprintf("https://metacpan.org/pod/%s", d.Name())
+	return fmt.Sprintf("https://%s/pod/%s", htmlHost, d.Name())
 }
 
 // The DistributionHits defines search results.
@@ -33,9 +33,7 @@ type SearchDistributionResult struct {
 
 // SearchDistribution search distribution by query and returns hits.
 func SearchDistribution(q string) ([]Distribution, error) {
-	body, err := request(fmt.Sprintf("%s%s?q=%s", host, APISearchDistribution, q))
-
-	fmt.Println(string(body))
+	body, err := request(fmt.Sprintf("%s?q=%s", APISearchDistribution, q))
 
 	if err != nil {
 		fmt.Println("error at request search distribution.")
