@@ -12,17 +12,17 @@ func main() {
 	flag.StringVar(&query, "q", "", "search query")
 	flag.Parse()
 
-	hits, err := metacpan.SearchDistribution(query)
+	dists, err := metacpan.SearchDistribution(query)
 
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
-	for i, hit := range hits {
+	for i, dist := range dists {
 		fmt.Println("---")
-		fmt.Printf("%d\n", i)
-		fmt.Printf("name\t:%s\n", hit.Name)
-		fmt.Printf("url\t:%s\n", hit.URL())
+		fmt.Printf("%d\n", i+1)
+		fmt.Printf("name\t: %s\n", dist.Name())
+		fmt.Printf("url\t: %s\n", dist.URL())
 	}
 }
