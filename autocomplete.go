@@ -3,6 +3,7 @@ package metacpan
 import (
 	"encoding/json"
 	"fmt"
+	"net/url"
 )
 
 // The AutocompleteFields defines fields in search result of autocomplete API.
@@ -35,7 +36,7 @@ type AutocompleteResult struct {
 
 // SearchAutocomplete search autocomplete by query and returns hits.
 func SearchAutocomplete(q string) ([]AutocompleteHit, error) {
-	body, err := request(fmt.Sprintf("%s?q=%s", APISearchAutocomplete, q))
+	body, err := request(fmt.Sprintf("%s?q=%s", APISearchAutocomplete, url.QueryEscape(q)))
 
 	if err != nil {
 		return nil, err
