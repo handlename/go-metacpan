@@ -38,7 +38,6 @@ func SearchAutocomplete(q string) ([]AutocompleteHit, error) {
 	body, err := request(fmt.Sprintf("%s?q=%s", APISearchAutocomplete, q))
 
 	if err != nil {
-		fmt.Println("error at request search autocomplete.")
 		return nil, err
 	}
 
@@ -46,7 +45,6 @@ func SearchAutocomplete(q string) ([]AutocompleteHit, error) {
 	err = json.Unmarshal(body, &result)
 
 	if err != nil {
-		fmt.Println("error at unmarshal response of search autocomplete.")
 		return nil, err
 	}
 
