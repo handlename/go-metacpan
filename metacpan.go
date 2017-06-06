@@ -8,14 +8,14 @@ import (
 
 // hosts
 const (
-	apiHost  = "api.metacpan.org"
+	apiHost  = "fastapi.metacpan.org"
 	htmlHost = "metacpan.org"
 )
 
 // APIs
 const (
-	APISearchAutocomplete = "/v0/search/autocomplete"
-	APISearchDistribution = "/v0/distribution/_search"
+	APISearchAutocomplete = "/v1/search/autocomplete"
+	APISearchDistribution = "/v1/distribution/_search"
 )
 
 func request(urlStr string) ([]byte, error) {
