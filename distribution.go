@@ -33,7 +33,8 @@ type SearchDistributionResult struct {
 
 // SearchDistribution search distribution by query and returns hits.
 func SearchDistribution(q string) ([]Distribution, error) {
-	body, err := request(fmt.Sprintf("%s?q=%s", APISearchDistribution, q))
+	u := fmt.Sprintf("%s?q=%s", APISearchDistribution, q)
+	body, err := request(u)
 
 	if err != nil {
 		fmt.Println("error at request search distribution.")
